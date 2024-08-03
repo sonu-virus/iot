@@ -11,8 +11,8 @@ const Home = () => {
     handleLevData();
   }, []);
   return (
-    <div className="flex justify-center items-center min-h-screen">
-      <div className="p-5">
+    <div className="flex justify-center  mx-10 items-center min-h-screen">
+      <div className="w-full ">
         <Tank handleLevData={levelData} />
       </div>
     </div>

@@ -5,16 +5,20 @@ const TankCard = (props) => {
     <div>
       <div>
         <div className="relative ">
-          <i>
-            <strong className="text-3xl text-blue-900">
-              Made By Inflection ORG Pvt Ltd
-            </strong>
-          </i>
+          <strong className="text-2xl whitespace-pre-wrap ml-6  flex  font-sans   text-blue-900">
+            Tank Device Inflection ORG Pvt Ltd
+          </strong>
           <div>
             {props.isPower === true ? (
-              <div className="bg-green-600 absolute top-16 rounded-full w-4 h-4"></div>
+              <div
+                title="Power On"
+                className="bg-green-600 absolute top-20 right-4 rounded-full w-4 h-4"
+              ></div>
             ) : (
-              <div className="bg-red-600 absolute top-16 rounded-full w-4 h-4"></div>
+              <div
+                title="Power Off"
+                className="bg-red-600 absolute top-20 right-4 rounded-full w-4 h-4"
+              ></div>
             )}
           </div>
         </div>
@@ -33,7 +37,7 @@ const TankCard = (props) => {
         </div>
       </div>
 
-      <div className="flex  justify-center items-center gap-2 mt-6">
+      <div className="flex  justify-center items-center  gap-2 mt-6">
         {/* -----------on off ------------------------ */}
         <div className="mt-4">
           {!props.pump_state === "on" ? (

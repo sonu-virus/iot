@@ -27,17 +27,23 @@ const Tank = () => {
   };
 
   useEffect(() => {
+    if (dId) {
+      const interval = setInterval(() => {
+        ShowTankDetails(dId);
+      }, 10000);
+      return () => clearInterval(interval);
+    }
     ShowCardDetails();
-  }, []);
+  }, [dId]);
 
   return (
     <div>
       {/* -------------------device card-------------------- */}
       <div>
         {tankDetail.length > 0 ? (
-          <div className="h-52 w-[500px]  border-2 mb-10 shadow-md shadow-gray-500 border-black">
+          <div className="h-52 w-full p-4 border-2 mb-10 shadow-md shadow-gray-500">
             {tankDetail.map((data) => (
-              <div key={data.device_id} className="text-white  p-6">
+              <div key={data.device_id} className="text-white  ">
                 <div className="flex justify-between mb-20">
                   <div className="text-black">{data.device_id}</div>
                   <div className="text-black">{data.building}</div>
@@ -56,7 +62,7 @@ const Tank = () => {
       </div>
       {/* -------------------------tank card------------------------------- */}
 
-      <div className="items-center border-2 border-black flex shadow-md shadow-gray-400 px-2 py-2  justify-center">
+      <div className="items-center relative  border-2 border-black flex shadow-md shadow-gray-400 p-4  justify-center">
         <TankCard
           tankDetail={tankDetail}
           myFunction={ShowTankDetails}
@@ -65,25 +71,8 @@ const Tank = () => {
           tankLevel={tankLevel}
           id={dId}
         />
-      </div>
-      {/* ------------------- */}
-      <div className=" relative  h-10 flex justify-center items-center w-full ">
-        <div onClick={handleTankDetail} className="absolute right-0">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            color="black"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="size-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-            />
-          </svg>
+        <div className="absolute bottom-4 right-4" onClick={handleTankDetail}>
+          show details
         </div>
       </div>
     </div>

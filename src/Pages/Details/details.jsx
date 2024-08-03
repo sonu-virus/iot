@@ -23,14 +23,23 @@ const Details = () => {
     navigate("/setting");
   };
   useEffect(() => {
-    ShowTankDetails(param.id);
+    if (param.id) {
+      const interval = setInterval(() => {
+        ShowTankDetails(param.id);
+      }, 10000);
+      console.log("hi");
+
+      // Clear the interval when the component unmounts or param.id changes
+      return () => clearInterval(interval);
+    }
   }, [param.id]);
+
   return (
-    <div>
+    <div className="p-4 gap-2 w-full">
       <div>
         {/* {(tankLevel > 0 || tankLevel === 100) && ( */}
         <div className="items-center  flex justify-center">
-          <div className="shadow-md shadow-gray-400 px-2 py-2  ">
+          <div className=" px-2 py-2  ">
             <TankCard
               isPower={isPower}
               myFunction={ShowTankDetails}
